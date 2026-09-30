@@ -1,62 +1,64 @@
 # unknown-words
 
-Give you a vocabulary-map for stepping into unfamiliar domains · 进入陌生技术领域前的第一张词汇地图
-
 [![skills.sh](https://skills.sh/b/TulanCN/unknown-words)](https://skills.sh/TulanCN/unknown-words)
 
-一个 agent skill（适用于 ZCode / Claude Code 及兼容 Agent Skills 规范的工具），治的是 **unknown-unknowns**：跨进新领域时，真正的障碍不是生词难懂——多数词听过一次就懂——而是**不知道这些词存在，连提问的入口都没有**。
+English | [中文](README_ZH.md)
 
-## 它做什么
+A vocabulary-map for stepping into unfamiliar domains.
 
-| 能力 | 说明 |
+An agent skill (for ZCode / Claude Code and anything compatible with the Agent Skills spec) that cures **unknown-unknowns**: when you enter an unfamiliar technical domain, the real barrier isn't that the words are hard — most terms click after hearing them once — it's that **you don't know which words exist, so you don't even have an entry point for asking**.
+
+## What it does
+
+| Capability | Description |
 |---|---|
-| 词汇地图 | 按组分层次一次铺全领域行话（高频/中频/低频），每个词给"人话定义 + 什么场景遇到 + 怎么发命令"三件套 |
-| 树状渐进图 | 词间可标注 `前置:` 依赖，渲染成拓扑分层的树状图；游离词超阈值渲染器会告警 |
-| Quiz 自测 | 树状图页按 <kbd>Q</kbd> 进全屏出题评分，从三件套自动出选择题，答错的词下一轮优先再现 |
-| 深挖途径 | 词卡一键复制追问提示词，粘进任意 agent 会话即可深挖 |
+| Vocabulary map | Lays out a domain's lingo in one pass, grouped and tiered (high / mid / low frequency). Every term gets a three-line primer: plain-language definition, where you'll meet it, and how to say it in a command. |
+| Progressive tree | Terms can declare prerequisite edges and render as a topology-layered tree; the renderer warns when too many terms float unconnected. |
+| Quiz | Press <kbd>Q</kbd> on the tree page for a full-screen quiz auto-generated from the primers; terms you miss resurface first next round, with ratings persisted in localStorage. |
+| Deep-dive handoff | One click copies a follow-up prompt for any term — paste it into any agent session to go deeper. |
 
-## 安装
+## Install
 
-一条命令（[skills.sh](https://skills.sh/TulanCN/unknown-words) 生态，支持 Claude Code / Codex / Cursor 等主流 agent）：
+One command (via the [skills.sh](https://skills.sh/TulanCN/unknown-words) ecosystem; works with Claude Code / Codex / Cursor and more):
 
 ```bash
 npx skills add TulanCN/unknown-words
 ```
 
-或手动把 [`unknown-words/`](unknown-words/) 整个目录复制到个人技能目录：
+Or copy the [`unknown-words/`](unknown-words/) directory into your personal skills directory:
 
 ```bash
 git clone https://github.com/TulanCN/unknown-words.git
-cp -r unknown-words/unknown-words ~/.agents/skills/   # ZCode / Claude Code 个人技能目录
+cp -r unknown-words/unknown-words ~/.agents/skills/   # ZCode / Claude Code personal skills dir
 ```
 
-重启会话后说"我要开始写前端了 / 接手 K8s 运维 / 我是刚转来的新手"即可自动触发，也可显式调用 `/unknown-words`。
+## Usage
 
-## 使用
-
-- **全图**：让 agent 为你的领域铺一张词汇地图，产出 `<domain>.md`（事实源）+ `<domain>.html`（渲染产物），落在当前工作目录
-- **快答**：单个词直接问（"这个报错里的词是什么意思"），已有地图会自动把词补进去
-- **渲染**：地图生长只改 md、重跑脚本，HTML 永远是生成物
+- **Full map**: ask your agent to lay out the vocabulary map for your domain. It produces `<domain>.md` (the source of truth) plus `<domain>.html` (rendered), both in your current working directory.
+- **Quick answer**: ask about a single term ("what does this word in the error message mean?"); if a map already exists, the term gets appended to it automatically.
+- **Regrow**: the map grows by editing the md and re-running the script — the HTML is always a generated artifact.
 
 ```bash
 python3 unknown-words/scripts/render_editorial.py <domain>.md -o <domain>.html [--layout tree|spread|inline|hover|review]
 ```
 
-## 结构
+## Structure
 
 ```
 .
-├── unknown-words/            # skill 本体:自包含,整目录拷走即装
-│   ├── SKILL.md              # 技能入口:分档规则、三件套格式、前置标注语法
-│   ├── FULL-MAP.md           # 全图模式流程:摸底 → 分组铺词 → 校验 → 落盘 → 交付
+├── unknown-words/            # the skill: self-contained, installable as a whole directory
+│   ├── SKILL.md              # entry: triage rules, three-line primer format, prereq syntax
+│   ├── FULL-MAP.md           # full-map workflow: scope → group & lay out → verify → write → deliver
 │   ├── LICENSE
 │   └── scripts/
-│       └── render_editorial.py   # 渲染器:树状图(默认) + 4 种瑞士编辑风版式,单文件自足
-├── AGENTS.md                 # agent 协作约定(开发态正本、验证命令)
+│       └── render_editorial.py   # renderer: tree (default) + 4 Swiss-editorial layouts, single file
+├── AGENTS.md                 # conventions for agents working on this repo
 ├── CHANGELOG.md
 ├── LICENSE
 └── README.md
 ```
+
+> Note: the skill's runtime content (SKILL.md, FULL-MAP.md, and renderer output) is Chinese-first — it is built for Chinese-speaking users entering new technical domains.
 
 ## License
 
