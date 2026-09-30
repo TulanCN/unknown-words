@@ -2,6 +2,8 @@
 
 Give you a vocabulary-map for stepping into unfamiliar domains · 进入陌生技术领域前的第一张词汇地图
 
+[![skills.sh](https://skills.sh/b/TulanCN/unknown-words)](https://skills.sh/TulanCN/unknown-words)
+
 一个 agent skill（适用于 ZCode / Claude Code 及兼容 Agent Skills 规范的工具），治的是 **unknown-unknowns**：跨进新领域时，真正的障碍不是生词难懂——多数词听过一次就懂——而是**不知道这些词存在，连提问的入口都没有**。
 
 ## 它做什么
@@ -15,7 +17,13 @@ Give you a vocabulary-map for stepping into unfamiliar domains · 进入陌生�
 
 ## 安装
 
-把 [`unknown-words/`](unknown-words/) 整个目录复制到个人技能目录：
+一条命令（[skills.sh](https://skills.sh/TulanCN/unknown-words) 生态，支持 Claude Code / Codex / Cursor 等主流 agent）：
+
+```bash
+npx skills add TulanCN/unknown-words
+```
+
+或手动把 [`unknown-words/`](unknown-words/) 整个目录复制到个人技能目录：
 
 ```bash
 git clone https://github.com/TulanCN/unknown-words.git
