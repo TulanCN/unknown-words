@@ -1,0 +1,70 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.8",
+  "base_commit_sha": "daa148b425dfade86282fc47e8fb445798dada1f",
+  "prompts": {},
+  "commit_stats": {
+    "git_diff_added_lines": 2172,
+    "git_diff_deleted_lines": 1,
+    "ai_additions": 0,
+    "ai_accepted": 0,
+    "BYMC": 2172,
+    "mixed_additions": 0,
+    "BYAC": 0,
+    "BYRC": 0,
+    "per_file": {
+      "AGENTS.md": {
+        "BYMC": [
+          "1-12"
+        ],
+        "BYAC": [],
+        "BYRC": []
+      },
+      "CHANGELOG.md": {
+        "BYMC": [
+          "1-13"
+        ],
+        "BYAC": [],
+        "BYRC": []
+      },
+      "README.md": {
+        "BYMC": [
+          "2-55"
+        ],
+        "BYAC": [],
+        "BYRC": []
+      },
+      "unknown-words/FULL-MAP.md": {
+        "BYMC": [
+          "1-70"
+        ],
+        "BYAC": [],
+        "BYRC": []
+      },
+      "unknown-words/LICENSE": {
+        "BYMC": [
+          "1-201"
+        ],
+        "BYAC": [],
+        "BYRC": []
+      },
+      "unknown-words/SKILL.md": {
+        "BYMC": [
+          "1-49"
+        ],
+        "BYAC": [],
+        "BYRC": []
+      },
+      "unknown-words/scripts/render_editorial.py": {
+        "BYMC": [
+          "1-1773"
+        ],
+        "BYAC": [],
+        "BYRC": []
+      }
+    }
+  },
+  "commit_timestamp": 1790748582,
+  "requirement_id": ""
+}
